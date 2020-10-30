@@ -5,4 +5,10 @@ class Api::ActorsController < ApplicationController
     
     render "actor.json.jb"
   end
+
+  def display_actor
+    input = params["id"]
+    @output = Actor.find_by(id: input)
+    render 'actor.json.jb'
+  end
 end

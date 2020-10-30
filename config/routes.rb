@@ -8,6 +8,8 @@ Rails.application.routes.draw do
     get "/all_movies" => "movies#display_all"
     get "/first_movie" => "movies#display_first_movie"
     get "/first_five" => "movies#display_first_five_movies"
-
+    get "/actorQ" => "actors#display_actor"
+    get "/actorU/:id" => "actors#display_actor"
+    post "/actorB" => "actors#display_actor"
   end
 end
