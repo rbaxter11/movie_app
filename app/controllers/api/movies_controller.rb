@@ -1,19 +1,41 @@
 class Api::MoviesController < ApplicationController
-  def display_all
-    @movies = Movie.all
-
-    render 'movie.json.jb'
+  def show
+    input = params["id"]
+    @movie = Movie.find_by(id: input)
+    render 'show.json.jb'
   end
-  
-  def display_first_movie
-    @movie = Movie.first
 
-    render 'first_movie.json.jb'
+  def index
+    @movie = Movie.all 
+    render 'index.json.jb'
   end
-  
-  def display_first_five_movies
-    @movies = Movie.limit(5)
 
-    render 'first_five.json.jb'
+  def create
+    @movie = Movie.new ({
+      title: params["title"],
+      year: params["year"],
+      plot: params["plot"],
+    })
+    @movie.save
+    render 'show.json.jb'
+  end
+
+  def update
+    input = params["id"]
+    @movie = Movie.find_by(id: input)
+
+    @movie.title = params["title"] || @movie.title
+    @movie.year = params["year"] || @movie.year
+    @movie.plot = params["plot"] || @movie.plot
+    
+    @movie.save
+    render 'show.json.jb'
+  end
+
+  def destroy
+    input = params["id"]
+    @movie = Movie.find_by(id: input)
+    @movie.destroy
+    render json: {message: "Movie removed!"}
   end
 end

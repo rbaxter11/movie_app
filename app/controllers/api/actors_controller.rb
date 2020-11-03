@@ -1,14 +1,42 @@
 class Api::ActorsController < ApplicationController
 
-  def display_an_actor
-    @actor = Actor.find_by(id: 5)
-    
-    render "actor.json.jb"
+  def show
+    input = params["id"]
+    @actor = Actor.find_by(id: input)
+    render 'show.json.jb'
   end
 
-  def display_actor
+  def index
+    @actor = Actor.all 
+    render 'index.json.jb'
+  end
+
+  def create
+    @actor = Actor.new ({
+      first_name: params["first_name"],
+      last_name: params["last_name"],
+      known_for: params["known_for"],
+    })
+    @actor.save
+    render 'show.json.jb'
+  end
+
+  def update
     input = params["id"]
-    @output = Actor.find_by(id: input)
-    render 'actor.json.jb'
+    @actor = Actor.find_by(id: input)
+
+    @actor.first_name = params["first_name"] || @actor.first_name
+    @actor.last_name = params["last_name"] || @actor.last_name
+    @actor.known_for = params["known_for"] || @actor.known_for
+    
+    @actor.save
+    render 'show.json.jb'
+  end
+
+  def destroy
+    input = params["id"]
+    @actor = Actor.find_by(id: input)
+    @actor.destroy
+    render json: {message: "Actor removed!"}
   end
 end

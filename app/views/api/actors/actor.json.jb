@@ -1,4 +1,0 @@
-{
-  actor: @actor,
-  output: @output,
-}
