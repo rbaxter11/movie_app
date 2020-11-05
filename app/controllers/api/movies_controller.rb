@@ -1,7 +1,7 @@
 class Api::MoviesController < ApplicationController
   def show
     input = params["id"]
-    @movies = Movie.find_by(id: input)
+    @movie = Movie.find_by(id: input)
     render 'show.json.jb'
   end
 
@@ -11,28 +11,28 @@ class Api::MoviesController < ApplicationController
   end
 
   def create
-    @movies = Movie.new ({
+    @movie = Movie.new ({
       title: params["title"],
       year: params["year"],
       plot: params["plot"],
       director: params["director"],
       english: params["english"],
     })
-    @movies.save
+    @movie.save
     render 'show.json.jb'
   end
 
   def update
     input = params["id"]
-    @movies = Movie.find_by(id: input)
+    @movie = Movie.find_by(id: input)
 
-    @movies.title = params["title"] || @movie.title
-    @movies.year = params["year"] || @movie.year
-    @movies.plot = params["plot"] || @movie.plot
-    @movies.director = params["director"] || @movie.director
-    @movies.english = params["english"] || @movie.english
+    @movie.title = params["title"] || @movie.title
+    @movie.year = params["year"] || @movie.year
+    @movie.plot = params["plot"] || @movie.plot
+    @movie.director = params["director"] || @movie.director
+    @movie.english = params["english"] || @movie.english
     
-    @movies.save
+    @movie.save
     render 'show.json.jb'
   end
 

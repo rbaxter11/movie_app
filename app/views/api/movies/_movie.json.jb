@@ -1,7 +1,8 @@
 {
-  title: @movies.title,
-  year: @movies.year,
-  plot: @movies.plot,
-  director: @movies.director,
-  english: @movies.english,
+  id: movie.id,
+  title: movie.title,
+  year: movie.year,
+  plot: movie.plot,
+  director: movie.director,
+  english: movie.english,
 }
