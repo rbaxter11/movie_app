@@ -6,7 +6,7 @@ class Api::MoviesController < ApplicationController
   end
 
   def index
-    @movies = Movie.all 
+    @movies = Movie.where("english = true")
     render 'index.json.jb'
   end
 
@@ -24,7 +24,7 @@ class Api::MoviesController < ApplicationController
       render json: { errors: @movie.errors.full_messages },
       status: :unprocessable_entity
     end
-
+  end
   def update
     input = params["id"]
     @movie = Movie.find_by(id: input)
@@ -41,6 +41,7 @@ class Api::MoviesController < ApplicationController
       render json: { errors: @movie.errors.full_messages },
       status: :unprocessable_entity
     end
+  end
 
   def destroy
     input = params["id"]
