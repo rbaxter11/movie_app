@@ -1,4 +1,4 @@
-require 'ffaker'
+require "ffaker"
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -9,10 +9,32 @@ require 'ffaker'
 # actor = Actor.new({first_name: "Benedict", last_name: "Cumberbatch", known_for: "Sherlock"})
 # actor.save
 
-# 10.times do 
+# 10.times do
 #   actor = Actor.new(first_name: FFaker::Name.first_name, last_name: FFaker::Name.last_name, known_for: FFaker::Movie.title)
 #   actor.save
 # end
 
-movie = Movie.create(title: "Tommy Boy", year: 1995, plot: "After his auto-parts tycoon father dies, the overweight, underachieving son teams up with a snide accountant to try and save the family business.")
-movie = Movie.create(title: "Inception", year: 2010, plot: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.")
+# movie = Movie.create(title: "Tommy Boy", year: 1995, plot: "After his auto-parts tycoon father dies, the overweight, underachieving son teams up with a snide accountant to try and save the family business.")
+# movie = Movie.create(title: "Inception", year: 2010, plot: "A thief who steals corporate secrets through the use of dream-sharing technology is given the inverse task of planting an idea into the mind of a C.E.O.")
+
+# genre = Genre.new(name: "Action")
+# genre.save
+# genre = Genre.new(name: "Comedy")
+# genre.save
+# genre = Genre.new(name: "Romantic Comedy")
+# genre.save
+
+# a = MovieGenre.new(movie_id: 1, genre_id: 2)
+# a.save
+# a = MovieGenre.new(movie_id: 2, genre_id: 2)
+# a.save
+# a = MovieGenre.new(movie_id: 3, genre_id: 1)
+# a.save
+# a = MovieGenre.new(movie_id: 4, genre_id: 2)
+# a.save
+# a = MovieGenre.new(movie_id: 5, genre_id: 1)
+# a.save
+# a = MovieGenre.new(movie_id: 6, genre_id: 3)
+# a.save
+# a = MovieGenre.new(movie_id: 11, genre_id: 1)
+# a.save
