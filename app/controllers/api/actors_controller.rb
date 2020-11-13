@@ -1,4 +1,6 @@
 class Api::ActorsController < ApplicationController
+  before_action :authenticate_admin, except: [:index, :show]
+
   def show
     input = params["id"]
     @actor = Actor.find_by(id: input)

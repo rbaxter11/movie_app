@@ -1,13 +1,15 @@
 class Api::MoviesController < ApplicationController
+  before_action :authenticate_admin, except: [:index, :show]
+
   def show
     input = params["id"]
     @movie = Movie.find_by(id: input)
-    render 'show.json.jb'
+    render "show.json.jb"
   end
 
   def index
     @movies = Movie.where("english = true")
-    render 'index.json.jb'
+    render "index.json.jb"
   end
 
   def create
@@ -19,12 +21,13 @@ class Api::MoviesController < ApplicationController
       english: params["english"],
     })
     if @movie.save
-      render 'show.json.jb'
+      render "show.json.jb"
     else
       render json: { errors: @movie.errors.full_messages },
-      status: :unprocessable_entity
+             status: :unprocessable_entity
     end
   end
+
   def update
     input = params["id"]
     @movie = Movie.find_by(id: input)
@@ -34,12 +37,12 @@ class Api::MoviesController < ApplicationController
     @movie.plot = params["plot"] || @movie.plot
     @movie.director = params["director"] || @movie.director
     @movie.english = params["english"] || @movie.english
-    
+
     if @movie.save
-      render 'show.json.jb'
+      render "show.json.jb"
     else
       render json: { errors: @movie.errors.full_messages },
-      status: :unprocessable_entity
+             status: :unprocessable_entity
     end
   end
 
@@ -47,6 +50,6 @@ class Api::MoviesController < ApplicationController
     input = params["id"]
     @movies = Movie.find_by(id: input)
     @movies.destroy
-    render json: {message: "Movie removed!"}
+    render json: { message: "Movie removed!" }
   end
 end
