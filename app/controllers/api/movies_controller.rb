@@ -4,7 +4,8 @@ class Api::MoviesController < ApplicationController
   def show
     input = params["id"]
     @movie = Movie.find_by(id: input)
-    render "show.json.jb"
+    # render "show.json.jb"
+    render "show.html.erb"
   end
 
   def index
