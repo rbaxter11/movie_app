@@ -51,6 +51,6 @@ class Api::MoviesController < ApplicationController
     input = params["id"]
     @movies = Movie.find_by(id: input)
     @movies.destroy
-    render json: { message: "Movie removed!" }
+    render json: { message: "Movie was removed!" }
   end
 end
